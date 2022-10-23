@@ -1,14 +1,14 @@
-const { Course, Student } = require('../models');
+const { Thought, User } = require('../models');
 
 module.exports = {
   // Get all courses
-  getCourses(req, res) {
+  getThought(req, res) {
     Course.find()
       .then((courses) => res.json(courses))
       .catch((err) => res.status(500).json(err));
   },
   // Get a course
-  getSingleCourse(req, res) {
+  getSingleThought(req, res) {
     Course.findOne({ _id: req.params.courseId })
       .select('-__v')
       .then((course) =>
@@ -19,7 +19,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   // Create a course
-  createCourse(req, res) {
+  createThought(req, res) {
     Course.create(req.body)
       .then((course) => res.json(course))
       .catch((err) => {
@@ -28,7 +28,7 @@ module.exports = {
       });
   },
   // Delete a course
-  deleteCourse(req, res) {
+  deleteThought(req, res) {
     Course.findOneAndDelete({ _id: req.params.courseId })
       .then((course) =>
         !course
@@ -39,7 +39,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   // Update a course
-  updateCourse(req, res) {
+  updateThought(req, res) {
     Course.findOneAndUpdate(
       { _id: req.params.courseId },
       { $set: req.body },
@@ -52,4 +52,13 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+  // add reaction
+  addReaction(req, res) {
+
+  },
+  // remove reaction
+  removeReaction(req, res) {
+
+  },
+
 };
