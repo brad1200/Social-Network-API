@@ -31,6 +31,7 @@ module.exports = {
   },
 
   // Delete a thought
+  // might have to add extra part to connect to user
   deleteThought(req, res) {
     Thought.findOneAndDelete({ _id: req.params.thoughtId })
       .then((thought) =>
